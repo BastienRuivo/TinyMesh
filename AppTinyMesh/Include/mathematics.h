@@ -454,3 +454,7 @@ inline Vector Vector::Bilinear(const Vector& a00, const Vector& a10, const Vecto
 {
   return (1 - u) * (1 - v) * a00 + (1 - u) * (v)*a01 + (u) * (1 - v) * a10 + (u) * (v)*a11;
 }
+
+
+// CUSTOM
+
