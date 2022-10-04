@@ -3,6 +3,7 @@
 #include "box.h"
 #include "ray.h"
 #include "mathematics.h"
+#include "matrix.h"
 
 // Triangle
 class Triangle
@@ -98,6 +99,12 @@ public:
   Triangle GetTriangle(int) const;
   Vector Vertex(int) const;
   Vector Vertex(int, int) const;
+  Mesh& Rotate(const Vector & axis, double angle);
+  Mesh& RotateX(double angle);
+  Mesh& RotateY(double angle);
+  Mesh& RotateZ(double angle);
+  Mesh& Scale(const Vector & axis);
+  Mesh& Transform(const Matrix & mat);
 
   Vector Normal(int) const;
 
@@ -109,6 +116,8 @@ public:
 
   int VertexIndex(int, int) const;
   int NormalIndex(int, int) const;
+
+  void merge(const Mesh & other);
 
   Vector operator[](int) const;
 

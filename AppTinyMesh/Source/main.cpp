@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 	mainWin.showMaximized();
 
 	return app.exec();
+	//std::cout<<Rotate(Vector(0, 0, 1), 90) * Vector(1, 0, 0)<<std::endl;
 	// std::array<double, 9> values1 {
 	// 	9, 8, 7,
 	// 	4, 5, 6,
@@ -51,5 +52,14 @@ int main(int argc, char *argv[])
 	// std::cout<<"!M2"<<std::endl;
 	// std::cout<<(!m2)<<std::endl;
 	
-	// return 0;
+	// std::cout<<"m2(0, 2) = "<< m2(0, 2)<<std::endl;
+	// std::cout<<"m2(0, 2) + 0 = "<< m2(0, 2) + 0<<std::endl;
+	// std::cout<<"m2(0, 2) + 1 = "<<m2(0, 2) + 1<<std::endl;
+
+	// std::cout<<m2<<std::endl;
+	// std::cout<<"Transpo"<<std::endl;
+	// std::cout<<m2.Transpose()<<std::endl;
+
+
+	//return 0;
 }

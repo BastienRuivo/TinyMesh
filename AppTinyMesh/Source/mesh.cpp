@@ -1,5 +1,4 @@
 #include "mesh.h"
-
 /*!
 \class Mesh mesh.h
 
@@ -169,7 +168,7 @@ Mesh::Mesh(const Box& box)
 
   for (int i = 0; i < 8; i++)
   {
-    vertices[i] = box.Vertex(i);
+    vertices[i] = box.Vertex(i) ;
   }
 
   // Normals
@@ -201,6 +200,8 @@ Mesh::Mesh(const Box& box)
 
   AddTriangle(3, 2, 7, 3);
   AddTriangle(6, 7, 2, 3);
+
+  Scale(Vector(1, 2, 1));
 }
 
 /*!
@@ -307,3 +308,56 @@ void Mesh::SaveObj(const QString& url, const QString& meshName) const
   data.close();
 }
 
+Mesh& Mesh::Transform(const Matrix & mat)
+{
+  for (int i = 0; i < vertices.size(); i++)
+  {
+    vertices[i] = mat * vertices[i];
+  }
+  return (*this);
+}
+
+Mesh& Mesh::Rotate(const Vector & axis, double angle)
+{
+  return Transform(Matrix::Rotate(axis, angle));
+}
+
+Mesh& Mesh::RotateX(double angle)
+{
+  return Transform(Matrix::RotateX(angle));
+}
+
+Mesh& Mesh::RotateY(double angle)
+{
+  return Transform(Matrix::RotateY(angle));
+}
+
+Mesh& Mesh::RotateZ(double angle)
+{
+  return Transform(Matrix::RotateZ(angle));
+}
+
+Mesh& Mesh::Scale(const Vector & scale)
+{
+  return Transform(Matrix::Scale(scale));
+}
+
+void Mesh::merge(const Mesh & mesh)
+{
+  for(int i = 0; i < mesh.vertices.size(); i++)
+  {
+    this->vertices.push_back(mesh.vertices.at(i));
+  }
+  for(int i = 0; i < mesh.normals.size(); i++)
+  {
+    this->vertices.push_back(mesh.vertices.at(i));
+  }
+  for(int i = 0; i < mesh.varray.size(); i++)
+  {
+    this->vertices.push_back(mesh.vertices.at(i));
+  }
+  for(int i = 0; i < mesh.narray.size(); i++)
+  {
+    this->vertices.push_back(mesh.vertices.at(i));
+  }
+}

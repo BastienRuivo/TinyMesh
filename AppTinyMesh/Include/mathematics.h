@@ -94,6 +94,36 @@ public:
   explicit Vector(double);
   explicit Vector(double, double, double);
 
+  double& x() 
+  {
+    return c[0];
+  }
+
+  double& y()
+  {
+    return c[1];
+  }
+
+  double& z()
+  {
+    return c[2];
+  }
+
+  double getX() const
+  {
+    return c[0];
+  }
+
+  double getY() const
+  {
+    return c[1];
+  }
+
+  double getZ() const
+  {
+    return c[2];
+  }
+
   // Access members
   double& operator[] (int);
   double operator[] (int) const;
